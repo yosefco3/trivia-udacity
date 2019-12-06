@@ -1,0 +1,325 @@
+{
+	"info": {
+		"_postman_id": "e15ad481-6f9c-460d-b1cf-5f1018ecdb68",
+		"name": "trivia-udacity",
+		"description": "\nAn exercise in the full-stack Udacity course :\nUdacity is invested in creating bonding experiences for its employees and students. A bunch of team members got the idea to hold trivia on a regular basis and created a  webpage to manage the trivia app and play the game. that's the Trivia API.\n\n# Overview\nThe backend has build with flask , flask-restful , and serialized with flask-marshmallow.\n\n\n# Authentication\nThere is no authentication to that app. every body could get questions , add questions and play.\n\n# DB connection \nSet your password in the correct place.\n\n# Error Codes\n\n## 404 - not found\n## 500 - server error while inserting data.\n## 422 - unprocessable.\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get all categories ",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5c80a969-9bd3-4875-9c7b-9c3be66fb366",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/categories",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"categories"
+					]
+				},
+				"description": "handle GET requests for all available categories."
+			},
+			"response": []
+		},
+		{
+			"name": "post new question",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "23b5a74a-9fdc-4105-bfc5-fb1adb2f848f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"question\":\"how many fingers you have ?\",\n\"answer\":\"5\",\n\"difficulty\":\"1\",\n\"category\":\"science\"\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/questions",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"questions"
+					]
+				},
+				"description": "test the endpoint to POST a new question, \nwhich will require the question and answer text, \ncategory, and difficulty score."
+			},
+			"response": []
+		},
+		{
+			"name": "get questions with pagination",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "207fbe1e-8ca8-45fe-bc6b-8ea2850c2e0d",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/questions?page=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"questions"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				},
+				"description": "test an endpoint to handle GET requests for questions, \nincluding pagination (every 10 questions). \nThis endpoint should return a list of questions, \nnumber of total questions, current category, categories. "
+			},
+			"response": []
+		},
+		{
+			"name": "get category questions",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "00e1855d-8625-4afa-aca5-4e2e023dfde4",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/categories/2/questions?page=1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"categories",
+						"2",
+						"questions"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				},
+				"description": "test a GET endpoint to get questions based on category. "
+			},
+			"response": []
+		},
+		{
+			"name": "post end point for search",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "958b48d8-3dd9-4f23-989c-0a6c421734ba",
+						"exec": [
+							"",
+							"pm.test(\"Successful POST request\", function () {",
+							"    pm.expect(pm.response.code).to.be.oneOf([200,201,202]) || pm.expect(pm.response.text()).to.include(\"Questions\");",
+							"});",
+							"",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"searchterm\":\"title\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/questions/search",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"questions",
+						"search"
+					]
+				},
+				"description": "\ntest a POST endpoint to get questions based on a search term. \nIt should return any questions for whom the search term \nis a substring of the question. "
+			},
+			"response": []
+		},
+		{
+			"name": "delete question by id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "72e3ffc6-1a78-481a-bdf0-dada98f2ccf9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/questions/2",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"questions",
+						"2"
+					]
+				},
+				"description": "Create an endpoint to DELETE question using a question ID."
+			},
+			"response": []
+		},
+		{
+			"name": "the quiz game end point.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2b8d469d-7b87-4531-8ca3-80aa0a697872",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"category\":\"3\"\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/quizzes",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"quizzes"
+					]
+				},
+				"description": "tests a POST endpoint to get questions to play the quiz. \nThis endpoint should take category and  \nand return a random questions within the given category, \nif provided.\nit returns array with 5 random questions or the number of the questions in the category , if there are less than 5."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "49d801d2-b314-43d9-b995-09fe142332ba",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "90ca1233-836b-4c7f-8865-a524fa376012",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
