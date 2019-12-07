@@ -12,6 +12,11 @@ npm install
 npm run dev
 ```
 
+## The backend port is 2800:
+http://127.0.0.1:2800
+
+# The frontend port is 5000 :
+http://127.0.0.1:5000
 
 ## the collection , testing and the docs have build like the methods described in that course :
 https://www.udemy.com/course/advanced-rest-apis-flask-python
