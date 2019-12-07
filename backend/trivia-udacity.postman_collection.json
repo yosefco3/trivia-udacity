@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "e15ad481-6f9c-460d-b1cf-5f1018ecdb68",
+		"_postman_id": "383a06d0-f704-41c8-ad3e-36f966c1f058",
 		"name": "trivia-udacity",
-		"description": "\nAn exercise in the full-stack Udacity course :\nUdacity is invested in creating bonding experiences for its employees and students. A bunch of team members got the idea to hold trivia on a regular basis and created a  webpage to manage the trivia app and play the game. that's the Trivia API.\n\n# Overview\nThe backend has build with flask , flask-restful , and serialized with flask-marshmallow.\n\n\n# Authentication\nThere is no authentication to that app. every body could get questions , add questions and play.\n\n# DB connection \nSet your password in the correct place.\n\n# Error Codes\n\n## 404 - not found\n## 500 - server error while inserting data.\n## 422 - unprocessable.\n",
+		"description": "An exercise in the full-stack Udacity course :\nUdacity is invested in creating bonding experiences for its employees and students. A bunch of team members got the idea to hold trivia on a regular basis and created a  webpage to manage the trivia app and play the game. that's the Trivia API.\n\n# Overview\nThe backend has build with flask , flask-restful , and serialized with flask-marshmallow.\nThe front end has build with Svelte and Bootstrap.\n\n\n# Authentication\nThere is no authentication to that app. every body could get questions , add questions and play.\n\n# DB connection \nSet your password in the correct place.\n\n# Error Codes\n\n## 404 - not found\n## 500 - server error while inserting data.\n## 422 - unprocessable.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
