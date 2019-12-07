@@ -2,7 +2,8 @@
 
 
 ## The documantations are in :
-https://documenter.getpostman.com/view/7646139/SW7c2n18
+
+https://documenter.getpostman.com/view/7646139/SWE56eAF?version=latest
 
 ## The frontend had build from the begining with Svelte Js !!!
 to activate svelte app:
