@@ -7,7 +7,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 DEBUG = True
 
 # Connect to the database
-SQLALCHEMY_DATABASE_URI = 'postgres://yosefco3:1qa2ws3ed@localhost:5432/trivia'
+# put your password where the ********* ...
+SQLALCHEMY_DATABASE_URI = 'postgres://yosefco3:***************@localhost:5432/trivia'
 
 QUESTIONS_PER_PAGE = 3
 
