@@ -2,6 +2,7 @@
 import {onMount} from 'svelte'
 import find_category_by_id from './Question.svelte'
 import QuizQuestions from './QuizQuestions.svelte'
+import GameOver from './GameOver.svelte'
 
 const questionsPerPlay = 5; 
 
@@ -155,10 +156,9 @@ ul{
   <div class="row">
     <div class="col-12">
     {#if gameOver}
-      <h3>you got {numCorrect} from {totalQuestions} !</h3>
-      <button on:click={newGame} class="btn btn-success">New Game ?</button>
+      <GameOver {numCorrect} {totalQuestions} {newGame}/>
     {/if}
-      <QuizQuestions {questions} {guess} {evaluateAnswer} {currentQuestionIndex} {showAnswer} {nextQuestion}/>
+      <QuizQuestions {questions} bind:guess={guess} {evaluateAnswer} {currentQuestionIndex} {showAnswer} {nextQuestion}/>
     </div>    
   </div>
   {/if }
